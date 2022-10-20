@@ -26,7 +26,7 @@ class FlxVersionShader extends FlxShader {
 		{
 			var gl = __context.gl;
 			
-			var prefix:String = "#version 430\n";
+			var prefix:String = "#extension GL_ARB_arrays_of_arrays : require\n";
 
 			#if (js && html5)
 			prefix += (precisionHint == FULL ? "precision mediump float;\n" : "precision lowp float;\n");
