@@ -463,9 +463,9 @@ class DitherShader extends FlxShader
     // couldn't find a shadertoy link srry http://devlog-martinsh.blogspot.com/2011/03/glsl-8x8-bayer-matrix-dithering.html
     #if SHADERS_ENABLED
     @:glFragmentSource('
-        #pragma header
         #extension GL_ARB_arrays_of_arrays : require
         // Ordered dithering aka Bayer matrix dithering
+        #pragma header
 
         float Scale = 1.0;
 
