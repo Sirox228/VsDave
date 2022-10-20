@@ -458,12 +458,11 @@ class BlockedGlitchShader extends FlxShader
     }
 }
 
-class DitherShader extends FlxShader
+class DitherShader extends FlxVersionShader
 {
     // couldn't find a shadertoy link srry http://devlog-martinsh.blogspot.com/2011/03/glsl-8x8-bayer-matrix-dithering.html
     #if SHADERS_ENABLED
     @:glFragmentSource('
-        #version 430
         // Ordered dithering aka Bayer matrix dithering
         #pragma header
 
