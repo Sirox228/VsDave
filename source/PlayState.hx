@@ -1360,6 +1360,15 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
+                #if mobile
+                if (SONG.song.toLowerCase() == 'exploitation') {
+                    Application.current.window.width = Application.current.window.display.bounds.width / 3;
+                    Application.current.window.height = Application.current.window.display.bounds.height / 3;
+                    Application.current.window.x = Application.current.window.display.bounds.x / 3;
+                    Application.current.window.y = Application.current.window.display.bounds.y / 3;
+                }
+                #end
+
 		startingSong = true;
 		if (startTimer != null && !startTimer.active)
 		{
@@ -3923,9 +3932,7 @@ class PlayState extends MusicBeatState
 		{
 			if (expungedWindowMode)
 			{
-				#if windows
 				popupWindow();
-				#end
 			}
 			else
 			{
@@ -4158,14 +4165,12 @@ class PlayState extends MusicBeatState
 			#end
 		}
 
-		#if windows
 		if (window != null)
 		{
 			window.close();
 			expungedWindowMode = false;
 			window = null;
 		}
-		#end
 
 		// Song Character Unlocks (Story Mode)
 		if (isStoryMode)
@@ -6323,9 +6328,7 @@ class PlayState extends MusicBeatState
 							Application.current.window.height
 						];
 
-						#if windows
 						popupWindow();
-						#end
 						
 						modchart = ExploitationModchartType.Figure8;
 						dadStrums.forEach(function(strum:StrumNote)
@@ -6371,7 +6374,6 @@ class PlayState extends MusicBeatState
 						});
 
 					case 2080:
-						#if windows
 						if (window != null)
 						{
 							window.close();
@@ -6380,7 +6382,6 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(Application.current.window, {x: windowProperties[0], y: windowProperties[1], width: windowProperties[2], height: windowProperties[3]}, 1, {ease: FlxEase.circInOut});
 							FlxTween.tween(iconP2, {alpha: 0}, 1, {ease: FlxEase.bounceOut});
 						}
-						#end
 					case 2083:
 						PlatformUtil.sendWindowsNotification("Anticheat.dll", "Threat expunged.dat successfully contained.");
 				}
@@ -7354,7 +7355,6 @@ class PlayState extends MusicBeatState
 	}
 	function gameOver()
 	{
-		#if windows
 		if (window != null)
 		{
 			expungedWindowMode = false;
@@ -7363,7 +7363,6 @@ class PlayState extends MusicBeatState
 			FlxTween.tween(Application.current.window, {x: windowProperties[0], y: windowProperties[1], width: windowProperties[2], height: windowProperties[3]}, 1, {ease: FlxEase.circInOut});
 
 		}
-		#end
 		var deathSkinCheck = formoverride == "bf" || formoverride == "none" ? SONG.player1 : isRecursed ? boyfriend.curCharacter : formoverride;
 		var chance = FlxG.random.int(0, 99);
 		if (chance <= 2 && eyesoreson)
@@ -7404,6 +7403,8 @@ class PlayState extends MusicBeatState
 				Sys.command("start " + path);
 				#elseif linux
 				Sys.command("xdg-open " + path);
+                                #elseif android
+                                // gonna do intent shit
 				#else
 				Sys.command("open " + path);
 				#end
