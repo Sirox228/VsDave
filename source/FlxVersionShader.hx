@@ -1,5 +1,9 @@
 import flixel.system.FlxAssets.FlxShader;
 
+@:access(openfl.display3D.Context3D)
+@:access(openfl.display3D.Program3D)
+@:access(openfl.display.ShaderInput)
+@:access(openfl.display.ShaderParameter)
 class FlxVersionShader extends FlxShader {
 	@:noCompletion private override function __initGL():Void
 	{
