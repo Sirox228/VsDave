@@ -1360,14 +1360,12 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-                #if mobile
                 if (SONG.song.toLowerCase() == 'exploitation') {
-                    Application.current.window.width = Application.current.window.display.bounds.width / 3;
-                    Application.current.window.height = Application.current.window.display.bounds.height / 3;
-                    Application.current.window.x = Application.current.window.display.bounds.x / 3;
-                    Application.current.window.y = Application.current.window.display.bounds.y / 3;
+                    Application.current.window.width = Std.int(Application.current.window.display.bounds.width / 3);
+                    Application.current.window.height = Std.int(Application.current.window.display.bounds.height / 3);
+                    Application.current.window.x = Std.int(Application.current.window.display.bounds.x / 3);
+                    Application.current.window.y = Std.int(Application.current.window.display.bounds.y / 3);
                 }
-                #end
 
 		startingSong = true;
 		if (startTimer != null && !startTimer.active)
