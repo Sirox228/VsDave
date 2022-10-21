@@ -35,8 +35,10 @@ class CharacterDebug extends MusicBeatState
 
 	override function create()
 	{
-		FlxG.sound.music.stop();
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
 
+		FlxG.sound.music.stop();
 		FlxG.mouse.visible = true;
 
 		var gridBG:FlxSprite = FlxGridOverlay.create(10, 10);

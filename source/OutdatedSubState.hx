@@ -43,7 +43,7 @@ class OutdatedSubState extends MusicBeatState
 		add(txt);
 
 		#if mobile
-		addVirtualPad(LEFT_FULL, A_B_C);
+		addVirtualPad(NONE, A_B_C);
 		#end
 	}
 

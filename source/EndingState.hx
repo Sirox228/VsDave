@@ -21,6 +21,9 @@ class EndingState extends MusicBeatState
 	
 	override public function create():Void 
 	{
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
 		super.create();
 
 		FlxG.sound.playMusic(Paths.music(_song),1,true);

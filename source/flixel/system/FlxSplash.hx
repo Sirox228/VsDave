@@ -86,7 +86,15 @@ class FlxSplash extends FlxState
 	}
 	override public function update(elapsed:Float)
 	{
-		if (FlxG.save.data.hasSeenSplash && FlxG.keys.justPressed.ENTER)
+		#if mobile
+		var justTouched:Bool = false;
+
+		for (touch in FlxG.touches.list)
+			if (touch.justPressed)
+				justTouched = true;
+		#end
+
+		if (FlxG.save.data.hasSeenSplash && FlxG.keys.justPressed.ENTER #if mobile || justTouched #end)
 		{
 			onComplete(null);
 		}

@@ -47,6 +47,9 @@ class MusicPlayerState extends MusicBeatState
   
     override function create()
     {
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
         FlxG.autoPause = false;
         var initSonglist = CoolUtil.coolTextFile(Paths.txt('djSonglist')); //ah yeah dj song list
         for (i in 0...initSonglist.length)

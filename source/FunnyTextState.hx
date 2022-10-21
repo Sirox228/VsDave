@@ -63,6 +63,9 @@ class FunnyTextState extends FlxState
 
     override public function create():Void 
     {
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
         FlxG.sound.playMusic(Paths.music('TheAmbience','shared'), 1);
         recurserTextBG = new FlxTypedGroup<RecurserFunnyBGText>();
         for (_ in 0...50) //discard

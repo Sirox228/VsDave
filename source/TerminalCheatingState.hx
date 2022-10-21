@@ -29,6 +29,9 @@ class TerminalCheatingState extends FlxUIState
    }
    override function create()
 	{
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
       if (!FlxG.save.data.enteredTerminalCheatingState)
       {
          FlxG.save.data.enteredTerminalCheatingState = true;

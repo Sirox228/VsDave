@@ -39,36 +39,17 @@ class LoadingState extends MusicBeatState
 			function (lib)
 			{
 				callbacks = new MultiCallback(onLoad);
-				var introComplete = callbacks.add("introComplete");
-				checkLoadSong(getSongPath());
-				if (PlayState.SONG.needsVoices)
-					checkLoadSong(getVocalPath());
+
 				checkLibrary("shared");
 				if (PlayState.storyWeek > 0)
 					checkLibrary("week" + PlayState.storyWeek);
 				else
 					checkLibrary("tutorial");
 				
-				var fadeTime = 0.5;
-				FlxG.camera.fade(FlxG.camera.bgColor, fadeTime, true);
-				new FlxTimer().start(fadeTime + MIN_TIME, function(_) introComplete());
+				FlxG.camera.fade(FlxG.camera.bgColor, 0.5, true);
+				new FlxTimer().start(0.5 + MIN_TIME, function(_) callbacks.add("introComplete"));
 			}
 		);
-	}
-	
-	function checkLoadSong(path:String)
-	{
-		if (!Assets.cache.hasSound(path))
-		{
-			var library = Assets.getLibrary("songs");
-			final symbolPath = path.split(":").pop();
-			// @:privateAccess
-			// library.types.set(symbolPath, SOUND);
-			// @:privateAccess
-			// library.pathGroups.set(symbolPath, [library.__cacheBreak(symbolPath)]);
-			var callback = callbacks.add("song:" + path);
-			Assets.loadSound(path).onComplete(function (_) { callback(); });
-		}
 	}
 	
 	function checkLibrary(library:String)

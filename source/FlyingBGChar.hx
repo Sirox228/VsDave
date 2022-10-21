@@ -14,9 +14,9 @@ class FlyingBGChar extends BGSprite
    public var rightPosCheck:Float;
    public var randomSpeed:Float = 1;
    
-   public function new(spriteName:String, path:String)
+   public function new(spriteName:String, content:Dynamic)
    {
-      super(spriteName, 0, 0, path, null, 1, 1, true, false);
+      super(spriteName, 0, 0, content, null, 1, 1, true, false);
 
       init();
    }

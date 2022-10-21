@@ -20,6 +20,9 @@ class YouCheatedSomeoneIsComing extends FlxState //why did this extend music bea
 	
 	override public function create():Void 
 	{
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
 		super.create();
 		if(FlxG.sound.music != null)
 			FlxG.sound.music.stop();

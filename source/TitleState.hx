@@ -51,7 +51,10 @@ class TitleState extends MusicBeatState
 	var loopEyeTween:FlxTween;
 
 	override public function create():Void
-	{		
+	{
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
 		fun = FlxG.random.int(0, 999);
 		if(fun == 1)
 		{

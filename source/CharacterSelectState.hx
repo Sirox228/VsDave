@@ -123,6 +123,9 @@ class CharacterSelectState extends MusicBeatState
 	
 	override public function create():Void 
 	{
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
 		if (PlayState.SONG.song.toLowerCase() == 'exploitation')
 		{
 			if (FlxG.fullscreen)
@@ -135,15 +138,11 @@ class CharacterSelectState extends MusicBeatState
 		Conductor.changeBPM(110);
 
 		camGame = new FlxCamera();
-		camTransition = new FlxCamera();
-		camTransition.bgColor.alpha = 0;
 		camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
-		FlxG.cameras.add(camTransition);
 		FlxCamera.defaultCameras = [camGame];
-		Transition.nextCamera = camTransition;
 		
 		FlxG.camera.zoom = 1.2;
 		camHUD.zoom = 0.75;
@@ -294,6 +293,9 @@ class CharacterSelectState extends MusicBeatState
 
 		super.create();
 
+		camTransition = new FlxCamera();
+		camTransition.bgColor.alpha = 0;
+		FlxG.cameras.add(camTransition);
 		Transition.nextCamera = camTransition;
 	}
 
@@ -567,7 +569,11 @@ class CharacterSelectState extends MusicBeatState
 			FlxG.fullscreen = false;
 			FlxG.sound.play(Paths.sound('error'), 0.9);
 
+			#if android
+			openfl.Lib.application.window.alert("Null Object Reference", 'Error!');
+			#else
 			PlatformUtil.sendFakeMsgBox("Null Object Reference");
+			#end
 		}
 		if (FlxTransitionableState.skipNextTransIn)
 		{

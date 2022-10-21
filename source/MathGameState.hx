@@ -41,6 +41,9 @@ class MathGameState extends MusicBeatState
 
    override function create()
    {
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
       persistentUpdate = persistentDraw = true;
 
       baldiAudio = new FlxSound();

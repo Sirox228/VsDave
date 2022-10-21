@@ -43,6 +43,9 @@ class OptionsMenu extends MusicBeatState
 	var curSongBarOptionSelected:Int;
 	override function create()
 	{
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
 		#if desktop
 		DiscordClient.changePresence("In the Options Menu", null);
 		#end

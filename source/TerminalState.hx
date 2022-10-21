@@ -85,6 +85,9 @@ class TerminalState extends MusicBeatState
 
     override public function create():Void
     {
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
         Main.fps.visible = false;
         PlayState.isStoryMode = false;
         displayText = new FlxText(0, 0, FlxG.width, previousText, 32);

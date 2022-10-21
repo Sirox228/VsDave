@@ -1,4 +1,5 @@
 package;
+
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.FlxSprite;
 
@@ -7,18 +8,18 @@ using StringTools;
 class BGSprite extends FlxSprite
 {
 	public var spriteName:String;
-	public function new(spriteName:String, posX:Float, posY:Float, path:String = '', animations:Array<Animation>, scrollX:Float = 1, scrollY:Float = 1, antialiasing:Bool = true, active:Bool = false)
+	public function new(spriteName:String, posX:Float, posY:Float, content:Dynamic, animations:Array<Animation>, scrollX:Float = 1, scrollY:Float = 1, antialiasing:Bool = true, active:Bool = false)
 	{
 		super(posX, posY);
-		
+
 		this.spriteName = spriteName;
 		var hasAnimations:Bool = animations != null;
 
-		if (path != '')
+		if (path != null)
 		{
 			if (hasAnimations)
 			{
-				frames = Paths.getSparrowAtlas(path);
+				frames = content;
 				for (i in 0...animations.length)
 				{
 					var curAnim = animations[i];
@@ -37,7 +38,7 @@ class BGSprite extends FlxSprite
 			}
 			else
 			{
-				loadGraphic(path);
+				loadGraphic(content);
 			}
 		}
 		this.antialiasing = antialiasing;

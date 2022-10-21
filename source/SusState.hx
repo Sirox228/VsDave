@@ -14,6 +14,9 @@ class SusState extends FlxState
     }
     override public function create()
     {
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
         super.create();
 
         sus = new FlxSprite(0, 0);

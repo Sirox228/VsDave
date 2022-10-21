@@ -111,6 +111,9 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
 		#if desktop DiscordClient.changePresence("In the Freeplay Menu", null); #end
 		
 		awaitingExploitation = (FlxG.save.data.exploitationState == 'awaiting');
