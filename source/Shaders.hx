@@ -477,7 +477,7 @@ class DitherShader extends FlxShader
                 a[3] = 40;
                 a[4] = 2;
                 a[5] = 34;
-                a[6] =  10;
+                a[6] = 10;
                 a[7] = 42; /* 8x8 Bayer ordered dithering */
             }
             if (x == 1) {
@@ -496,7 +496,7 @@ class DitherShader extends FlxShader
                 a[2] = 4;
                 a[3] = 36;
                 a[4] = 14;
-                a[5] =46;
+                a[5] = 46;
                 a[6] = 6;
                 a[7] = 38; /* is scaled to the 0..63 range */
             }
